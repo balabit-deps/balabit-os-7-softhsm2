@@ -1,0 +1,299 @@
+softhsm2 (2.2.0-3.1build1) bionic; urgency=high
+
+  * No change rebuild against openssl1.1.
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Mon, 05 Feb 2018 16:53:57 +0000
+
+softhsm2 (2.2.0-3.1) unstable; urgency=medium
+
+  [Tobias Frost ]
+  * Non-maintainer upload.
+  * Import patch from Rene from the BTS.
+  * Lintian warning fixed:
+    - Fix VCS-* links in d/control ("right" URL and using https)
+    - As package priority extra is obsolete, change it to optional.
+      This fixed transitional-package-should-be-oldlibs-optional and
+      priority-extra-is-replaced-by-priority-optional.
+    - Add debhelper-but-no-misc-depends also to the transitional packages
+
+  [ Rene Engelhard ]
+  * use pkg-config instead of cppunit-config for cppunit (Closes: #868855)
+
+ -- Tobias Frost <tobi@debian.org>  Sun, 22 Oct 2017 13:41:11 +0200
+
+softhsm2 (2.2.0-3) unstable; urgency=medium
+
+  * Replace doc symlink with directory in transitional softhsm package
+    (Closes: #854858)
+
+ -- Ondřej Surý <ondrej@debian.org>  Sun, 12 Feb 2017 15:12:33 +0100
+
+softhsm2 (2.2.0-2) unstable; urgency=medium
+
+  [ Mike Miller ]
+  * Install PKCS#11 module configuration file for p11-kit
+    (Closes: #849158)
+
+  [ Ondřej Surý ]
+  * Remove spurious /usr/share/doc/softhsm symlink (Closes: #849624)
+  * Switch to automatic dbgsym packages
+  * Introduce dummy softhsm-common and softhsm packages to circumvent
+    around softhsm-common postinst that removes softhsm user and breaks
+    softhsm2 (Closes: #847117)
+
+ -- Ondřej Surý <ondrej@debian.org>  Mon, 02 Jan 2017 15:51:50 +0100
+
+softhsm2 (2.2.0-1) unstable; urgency=medium
+
+  * Imported Upstream version 2.2.0
+
+ -- Ondřej Surý <ondrej@debian.org>  Mon, 05 Dec 2016 13:55:49 +0100
+
+softhsm2 (2.2.0~rc2-1) unstable; urgency=medium
+
+  * Move the package under pkg-dns
+  * Imported Upstream version 2.2.0~rc2
+  * 32-bit patch has been merged upstream
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 16 Nov 2016 21:37:05 +0100
+
+softhsm2 (2.2.0~rc1-2) unstable; urgency=medium
+
+  [ Rickard Bellgrim ]
+  * Fix p11test failing on 32-bit systems.
+
+ -- Ondřej Surý <ondrej@debian.org>  Sat, 12 Nov 2016 01:58:22 +0100
+
+softhsm2 (2.2.0~rc1-1) unstable; urgency=medium
+
+  * Imported Upstream version 2.2.0~rc1
+   + OpenSSL 1.1.0 support (Closes: #828551)
+  * Disable GOST support due OpenSSL 1.1.0
+
+ -- Ondřej Surý <ondrej@debian.org>  Sun, 06 Nov 2016 22:17:08 +0100
+
+softhsm2 (2.1.0-3) unstable; urgency=medium
+
+  [ Edmund Grimley Evans ]
+  * Fix FTBFS on arm64
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue, 19 Apr 2016 12:46:51 +0200
+
+softhsm2 (2.1.0-2) unstable; urgency=medium
+
+  * Kill dbg packages
+  * Put libsofthsm2.so back to non-MA /usr/lib to allow easy usage
+    in other applications.
+
+ -- Ondřej Surý <ondrej@debian.org>  Thu, 07 Apr 2016 00:17:33 +0200
+
+softhsm2 (2.1.0-1) unstable; urgency=medium
+
+  * Imported Upstream version 2.1.0
+  * Rebuild patches using gbp pq
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 06 Apr 2016 22:03:04 +0200
+
+softhsm2 (2.0.0-2) unstable; urgency=medium
+
+  * Add missing Conflicts on libsofthsm-dev to libsofthsm2-dev (Closes: #796837)
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue, 25 Aug 2015 13:11:52 +0200
+
+softhsm2 (2.0.0-1) unstable; urgency=medium
+
+  * Imported Upstream version 2.0.0
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 29 Jul 2015 09:30:01 +0200
+
+softhsm2 (2.0.0~rc1-1) unstable; urgency=medium
+
+  * Rename the package to softhsm2 to allow coinstallation with SoftHSM 1
+  * Compile with OpenSSL backend
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue, 02 Jun 2015 17:46:57 +0200
+
+softhsm (1.3.7-2) unstable; urgency=medium
+
+  * Fix softhsm-keyconv creating security-sensibe file world-readable
+    (Closes: #752092)
+  * Update Vcs-Urls to point to anonscm.debian.org
+  * Standardize gbp repository layout
+
+ -- Ondřej Surý <ondrej@debian.org>  Mon, 01 Dec 2014 17:52:05 +0100
+
+softhsm (1.3.7-1) unstable; urgency=medium
+
+  * New upstream version 1.3.7
+
+ -- Ondřej Surý <ondrej@debian.org>  Sun, 01 Jun 2014 23:52:47 +0200
+
+softhsm (1.3.6-1) unstable; urgency=medium
+
+  * Don't enable 64-bit compilation (-m64) also on mips64(el)
+    (Closes: #726280)
+  * New upstream version 1.3.6
+  * README doesn't exist anymore and install NEWS as upstream changelog
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 28 May 2014 14:19:36 +0200
+
+softhsm (1.3.5-1) unstable; urgency=low
+
+  * New upstream version 1.3.5
+
+ -- Ondřej Surý <ondrej@debian.org>  Thu, 10 Oct 2013 12:51:41 +0200
+
+softhsm (1.3.4-1) unstable; urgency=low
+
+  * New upstream version 1.3.4
+  * Update patches for 1.3.4 release
+  * Start using dh-autoreconf
+
+ -- Ondřej Surý <ondrej@debian.org>  Fri, 27 Sep 2013 08:52:54 +0200
+
+softhsm (1.3.3-2) unstable; urgency=high
+
+  * Don't install /etc/softhsm/softhsm.conf to softhsm package
+    (Closes: #681311)
+  * Add an empty /var/lib/softhsm directory to the softhsm-common
+    package
+
+ -- Ondřej Surý <ondrej@debian.org>  Thu, 12 Jul 2012 14:07:12 +0200
+
+softhsm (1.3.3-1) unstable; urgency=low
+
+  * Imported Upstream version 1.3.3
+  * Update patches for new release
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 16 May 2012 10:04:33 +0200
+
+softhsm (1.3.2-1) unstable; urgency=low
+
+  * Imported Upstream version 1.3.2
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 07 Mar 2012 12:03:03 +0100
+
+softhsm (1.3.1-3) unstable; urgency=low
+
+  * Build softhsm-dbg package with debugging symbols
+
+ -- Ondřej Surý <ondrej@debian.org>  Mon, 20 Feb 2012 14:37:31 +0100
+
+softhsm (1.3.1-2) unstable; urgency=low
+
+  * Add NEWS file about libsofthsm.so location change and depend on
+    OpenDNSSEC version which has correct location in configuration
+    (Closes: #659352)
+
+ -- Ondřej Surý <ondrej@debian.org>  Fri, 10 Feb 2012 15:28:17 +0100
+
+softhsm (1.3.1-1) unstable; urgency=low
+
+  * Imported Upstream version 1.3.1
+  * libraries have moved to /usr/lib/softhsm/
+  * Install softhsm.conf.sample to examples
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 18 Jan 2012 09:22:17 +0100
+
+softhsm (1.3.0-1) unstable; urgency=low
+
+  * Imported Upstream version 1.3.0
+    + Can now read CKA_ALWAYS_AUTHENTICATE but does not use it.
+    + Encryption and decryption using CKM_RSA_PKCS.
+    + Support X.509 certificates. (Patch from Thomas Calderon)
+    + Only a Security Officer can set CKA_TRUSTED to true.
+    + The softhsm tool can set the value of CKA_TRUSTED.
+    + Better signing performance with a single element cache for the PK_Signer object.
+  * Update Vcs-* links
+  * Use Botan 1.10 instead of Botan 1.8
+  * Compile --with-pic to fix FTBFS with Botan
+
+ -- Ondřej Surý <ondrej@debian.org>  Thu, 25 Aug 2011 16:05:55 +0200
+
+softhsm (1.2.1-1) unstable; urgency=low
+
+  * Imported Upstream version 1.2.1
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue, 10 May 2011 08:14:28 +0200
+
+softhsm (1.2.0-3) unstable; urgency=low
+
+  * Remove dpkg-statoverride entries first then remove group
+    (Closes: #619810)
+
+ -- Ondřej Surý <ondrej@debian.org>  Sun, 10 Apr 2011 21:52:39 +0200
+
+softhsm (1.2.0-2) unstable; urgency=low
+
+  * Add LDFLAGS to configure call to remove useless linkage
+  * softhsm should depend on libsofthsm (Closes: #602357)
+
+ -- Ondřej Surý <ondrej@debian.org>  Sun, 20 Mar 2011 13:26:58 +0100
+
+softhsm (1.2.0-1) unstable; urgency=low
+
+  * Imported Upstream version 1.2.0
+  * Adjust patches to new upstream version
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue, 25 Jan 2011 11:10:03 +0100
+
+softhsm (1.1.4-5) unstable; urgency=low
+
+  * Disable --enable-64bit on alpha and ia64 (Closes: #598747)
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue, 05 Oct 2010 10:53:50 +0200
+
+softhsm (1.1.4-4) unstable; urgency=low
+
+  * Loosen build dependencies on dpkg-dev and libtool to allow
+    backporting for lenny
+  * Remove symbols file since it really doesn't work for C++ libs.
+    (Closes: #584379)
+  * Use groupadd instead of addgroup (Closes: #591596)
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 04 Aug 2010 11:42:03 +0200
+
+softhsm (1.1.4-3) unstable; urgency=low
+
+  * softhsm-common now depend on ucf
+  * libsofthsm-dev now depend on softhsm-common
+  * Botan symbols starting with _Z prefix are now optional
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue, 13 Apr 2010 13:57:35 +0200
+
+softhsm (1.1.4-2) unstable; urgency=low
+
+  * Add softhsm-common to create softhsm group in postinst and remove it
+    in postinst
+  * Install the docs just one time, link from other packages built from
+    the same source
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue, 13 Apr 2010 11:32:55 +0200
+
+softhsm (1.1.4-1) unstable; urgency=low
+
+  * New upstream version 1.1.4
+    + libsofthsm doesn't carry version-info anymore, since it only 
+      provides libpkcs11 interface (+ add lintian-overrides)
+  * Install pkcs11.h from SCUTE project to /usr/include/softhsm/
+  * Update libsofthsm.symbols to include all symbols
+  * Export hardening on global level, add --with quilt to dh call
+
+ -- Ondřej Surý <ondrej@debian.org>  Thu, 08 Apr 2010 18:29:36 +0200
+
+softhsm (1.1.3-2) unstable; urgency=low
+
+  * Install .so into libsofthsm1, so it can be used as pkcs11 replacement
+    library
+  * Add libsofthsm1.symbols file
+
+ -- Ondřej Surý <ondrej@debian.org>  Sun, 28 Mar 2010 17:04:10 +0200
+
+softhsm (1.1.3-1) unstable; urgency=low
+
+  * Initial release (Closes: #566155)
+  * Build depend on binutils-gold and hardening-wrapper
+  * Build depend on botan 1.8.8-2 which includes fix for segfault
+    in check target
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue, 26 Jan 2010 09:02:08 +0100

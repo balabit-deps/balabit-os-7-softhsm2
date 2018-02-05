@@ -1,0 +1,278 @@
+Description: Fix to detect cppuinits ising pkg-config
+Author: Rene Engelhard <rene@debian.org>
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=868855
+Forwarded: no, already applied upstream
+
+--- a/src/lib/crypto/test/Makefile.am
++++ b/src/lib/crypto/test/Makefile.am
+@@ -9,7 +9,7 @@
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+ 				@CRYPTO_INCLUDES@ \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ check_PROGRAMS =		cryptotest
+ 
+@@ -32,7 +32,7 @@
+ 
+ cryptotest_LDADD =		../../libsofthsm_convarch.la
+ 
+-cryptotest_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `cppunit-config --libs`
++cryptotest_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit`
+ 
+ TESTS = 			cryptotest
+ 
+--- a/src/lib/crypto/test/Makefile.in
++++ b/src/lib/crypto/test/Makefile.in
+@@ -558,7 +558,7 @@
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+ 				@CRYPTO_INCLUDES@ \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ cryptotest_SOURCES = cryptotest.cpp \
+ 				AESTests.cpp \
+@@ -578,7 +578,7 @@
+ 				randtest.c
+ 
+ cryptotest_LDADD = ../../libsofthsm_convarch.la
+-cryptotest_LDFLAGS = @CRYPTO_LIBS@ -no-install `cppunit-config --libs`
++cryptotest_LDFLAGS = @CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit`
+ EXTRA_DIST = $(srcdir)/*.h
+ all: all-am
+ 
+--- a/src/lib/data_mgr/test/Makefile.am
++++ b/src/lib/data_mgr/test/Makefile.am
+@@ -9,7 +9,7 @@
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+ 				@CRYPTO_INCLUDES@ \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ check_PROGRAMS =		datamgrtest
+ 
+@@ -20,7 +20,7 @@
+ 
+ datamgrtest_LDADD =		../../libsofthsm_convarch.la 
+ 
+-datamgrtest_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `cppunit-config --libs`
++datamgrtest_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit`
+ 
+ TESTS = 			datamgrtest
+ 
+--- a/src/lib/data_mgr/test/Makefile.in
++++ b/src/lib/data_mgr/test/Makefile.in
+@@ -537,7 +537,7 @@
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+ 				@CRYPTO_INCLUDES@ \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ datamgrtest_SOURCES = datamgrtest.cpp \
+ 				ByteStringTests.cpp \
+@@ -545,7 +545,7 @@
+ 				SecureDataMgrTests.cpp
+ 
+ datamgrtest_LDADD = ../../libsofthsm_convarch.la 
+-datamgrtest_LDFLAGS = @CRYPTO_LIBS@ -no-install `cppunit-config --libs`
++datamgrtest_LDFLAGS = @CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit`
+ EXTRA_DIST = $(srcdir)/*.h
+ all: all-am
+ 
+--- a/src/lib/handle_mgr/test/Makefile.am
++++ b/src/lib/handle_mgr/test/Makefile.am
+@@ -9,7 +9,7 @@
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+ 				-I$(srcdir)/../../data_mgr \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ check_PROGRAMS =		handlemgrtest
+ 
+@@ -18,7 +18,7 @@
+ 
+ handlemgrtest_LDADD =		../../libsofthsm_convarch.la 
+ 
+-handlemgrtest_LDFLAGS = 	@CRYPTO_LIBS@ -no-install `cppunit-config --libs`
++handlemgrtest_LDFLAGS = 	@CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit`
+ 
+ TESTS = 			handlemgrtest
+ 
+--- a/src/lib/handle_mgr/test/Makefile.in
++++ b/src/lib/handle_mgr/test/Makefile.in
+@@ -537,13 +537,13 @@
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+ 				-I$(srcdir)/../../data_mgr \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ handlemgrtest_SOURCES = handlemgrtest.cpp \
+ 				HandleManagerTests.cpp
+ 
+ handlemgrtest_LDADD = ../../libsofthsm_convarch.la 
+-handlemgrtest_LDFLAGS = @CRYPTO_LIBS@ -no-install `cppunit-config --libs`
++handlemgrtest_LDFLAGS = @CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit`
+ EXTRA_DIST = $(srcdir)/*.h
+ all: all-am
+ 
+--- a/src/lib/object_store/test/Makefile.am
++++ b/src/lib/object_store/test/Makefile.am
+@@ -9,7 +9,7 @@
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+ 				@CRYPTO_INCLUDES@ \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ check_PROGRAMS =		objstoretest
+ 
+@@ -32,7 +32,7 @@
+ 
+ objstoretest_LDADD =		../../libsofthsm_convarch.la 
+ 
+-objstoretest_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `cppunit-config --libs` -pthread
++objstoretest_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit` -pthread
+ 
+ TESTS = 			objstoretest
+ 
+--- a/src/lib/object_store/test/Makefile.in
++++ b/src/lib/object_store/test/Makefile.in
+@@ -554,14 +554,14 @@
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+ 				@CRYPTO_INCLUDES@ \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ objstoretest_SOURCES = objstoretest.cpp DirectoryTests.cpp \
+ 	UUIDTests.cpp FileTests.cpp ObjectFileTests.cpp \
+ 	OSTokenTests.cpp ObjectStoreTests.cpp SessionObjectTests.cpp \
+ 	SessionObjectStoreTests.cpp $(am__append_1)
+ objstoretest_LDADD = ../../libsofthsm_convarch.la 
+-objstoretest_LDFLAGS = @CRYPTO_LIBS@ -no-install `cppunit-config --libs` -pthread
++objstoretest_LDFLAGS = @CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit` -pthread
+ EXTRA_DIST = $(srcdir)/*.h
+ all: all-am
+ 
+--- a/src/lib/session_mgr/test/Makefile.am
++++ b/src/lib/session_mgr/test/Makefile.am
+@@ -9,7 +9,7 @@
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+ 				-I$(srcdir)/../../object_store \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ check_PROGRAMS =		sessionmgrtest
+ 
+@@ -18,7 +18,7 @@
+ 
+ sessionmgrtest_LDADD =		../../libsofthsm_convarch.la 
+ 
+-sessionmgrtest_LDFLAGS =	@CRYPTO_LIBS@ -no-install `cppunit-config --libs` -pthread
++sessionmgrtest_LDFLAGS =	@CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit` -pthread
+ 
+ TESTS = 			sessionmgrtest
+ 
+--- a/src/lib/session_mgr/test/Makefile.in
++++ b/src/lib/session_mgr/test/Makefile.in
+@@ -537,13 +537,13 @@
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+ 				-I$(srcdir)/../../object_store \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ sessionmgrtest_SOURCES = sessionmgrtest.cpp \
+ 				SessionManagerTests.cpp
+ 
+ sessionmgrtest_LDADD = ../../libsofthsm_convarch.la 
+-sessionmgrtest_LDFLAGS = @CRYPTO_LIBS@ -no-install `cppunit-config --libs` -pthread
++sessionmgrtest_LDFLAGS = @CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit` -pthread
+ EXTRA_DIST = $(srcdir)/*.h
+ all: all-am
+ 
+--- a/src/lib/slot_mgr/test/Makefile.am
++++ b/src/lib/slot_mgr/test/Makefile.am
+@@ -9,7 +9,7 @@
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../data_mgr \
+ 				@CRYPTO_INCLUDES@ \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ check_PROGRAMS =		slotmgrtest
+ 
+@@ -18,7 +18,7 @@
+ 
+ slotmgrtest_LDADD =		../../libsofthsm_convarch.la 
+ 
+-slotmgrtest_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `cppunit-config --libs` -pthread
++slotmgrtest_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit` -pthread
+ 
+ TESTS = 			slotmgrtest
+ 
+--- a/src/lib/slot_mgr/test/Makefile.in
++++ b/src/lib/slot_mgr/test/Makefile.in
+@@ -536,13 +536,13 @@
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../data_mgr \
+ 				@CRYPTO_INCLUDES@ \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ slotmgrtest_SOURCES = slotmgrtest.cpp \
+ 				SlotManagerTests.cpp
+ 
+ slotmgrtest_LDADD = ../../libsofthsm_convarch.la 
+-slotmgrtest_LDFLAGS = @CRYPTO_LIBS@ -no-install `cppunit-config --libs` -pthread
++slotmgrtest_LDFLAGS = @CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit` -pthread
+ EXTRA_DIST = $(srcdir)/*.h
+ all: all-am
+ 
+--- a/src/lib/test/Makefile.am
++++ b/src/lib/test/Makefile.am
+@@ -3,7 +3,7 @@
+ AM_CPPFLAGS = 			-I$(srcdir)/.. \
+ 				-I$(srcdir)/../cryptoki_compat \
+ 				-I$(srcdir)/../common \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ check_PROGRAMS =		p11test
+ 
+@@ -29,7 +29,7 @@
+ 
+ p11test_LDADD =			../libsofthsm2.la 
+ 
+-p11test_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `cppunit-config --libs` -pthread -static
++p11test_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit` -pthread -static
+ 
+ TESTS = 			p11test
+ 
+--- a/src/lib/test/Makefile.in
++++ b/src/lib/test/Makefile.in
+@@ -539,7 +539,7 @@
+ AM_CPPFLAGS = -I$(srcdir)/.. \
+ 				-I$(srcdir)/../cryptoki_compat \
+ 				-I$(srcdir)/../common \
+-				`cppunit-config --cflags`
++				`pkg-config --cflags cppunit`
+ 
+ AUTOMAKE_OPTIONS = subdir-objects
+ p11test_SOURCES = p11test.cpp \
+@@ -561,7 +561,7 @@
+ 				../common/osmutex.cpp
+ 
+ p11test_LDADD = ../libsofthsm2.la 
+-p11test_LDFLAGS = @CRYPTO_LIBS@ -no-install `cppunit-config --libs` -pthread -static
++p11test_LDFLAGS = @CRYPTO_LIBS@ -no-install `pkg-config --libs cppunit` -pthread -static
+ EXTRA_DIST = $(srcdir)/*.h \
+ 				$(srcdir)/softhsm2-alt.conf.win32 \
+ 				$(srcdir)/softhsm2.conf.win32 \

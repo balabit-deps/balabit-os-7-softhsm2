@@ -1,0 +1,41 @@
+#!/bin/sh
+# postinst script for softhsm-common
+
+set -e
+
+set_perms() {
+    if ! dpkg-statoverride --list "$4" >/dev/null; then
+        dpkg-statoverride --update --add "$@"
+    fi
+}
+
+case "$1" in
+    configure)
+
+	# add softhsm group if it doesn't exists
+	if ! getent group softhsm > /dev/null; then
+	    groupadd --system softhsm > /dev/null
+	fi
+
+	# set correct permissions on softhsm directories
+	set_perms root softhsm 0750 /etc/softhsm
+	set_perms root softhsm 02770 /var/lib/softhsm
+
+	# create new and update old configuration file and set permissions
+	ucf /usr/share/softhsm/softhsm2.conf /etc/softhsm/softhsm2.conf
+	ucfr softhsm /etc/softhsm/softhsm2.conf
+	set_perms root softhsm 0640 /etc/softhsm/softhsm2.conf
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

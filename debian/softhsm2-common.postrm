@@ -1,0 +1,49 @@
+#!/bin/sh
+# postrm script for softhsm-common
+
+set -e
+
+unset_perms() {
+    dpkg-statoverride --remove "$1" >/dev/null 2>/dev/null || true
+}
+
+case "$1" in
+    purge)
+
+	unset_perms /etc/softhsm
+	unset_perms /var/lib/softhsm
+
+	# unset dpkg-statoverride permissions
+	unset_perms /etc/softhsm/softhsm2.conf
+
+	for ext in '~' '%' .bak .ucf-new .ucf-old .ucf-dist;  do
+	    rm -f /etc/softhsm/softhsm2.conf$ext
+	done
+        # remove the configuration file itself
+	rm -f /etc/softhsm/softhsm2.conf
+
+        # and finally clear it out from the ucf database
+	if which ucf >/dev/null; then
+	    ucf --purge /etc/softhsm/softhsm2.conf
+	fi
+	if which ucfr >/dev/null; then
+	    ucfr --purge softhsm /etc/softhsm/softhsm2.conf
+	fi
+
+	# delete old group
+	delgroup --quiet softhsm > /dev/null || true
+
+    ;;
+
+    remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    ;;
+
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

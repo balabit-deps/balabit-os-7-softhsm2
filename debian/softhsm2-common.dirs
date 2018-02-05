@@ -1,0 +1,3 @@
+etc/softhsm
+usr/share/softhsm
+var/lib/softhsm

@@ -1,0 +1,113 @@
+Source: softhsm2
+Section: admin
+Priority: optional
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Debian DNS Packaging <pkg-dns-devel@lists.alioth.debian.org>
+Uploaders: Ondřej Surý <ondrej@debian.org>
+Build-Depends: autotools-dev,
+               debhelper (>= 9),
+               dh-autoreconf,
+               libcppunit-dev,
+               libp11-kit-dev,
+               libsqlite3-dev (>= 3.4.2),
+               libssl-dev,
+               pkg-config,
+               quilt (>= 0.46-7~),
+               sqlite3
+Standards-Version: 3.9.8
+Homepage: https://www.opendnssec.org/softhsm/
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-dns/softhsm2.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-dns/softhsm2.git
+
+Package: softhsm2-common
+Architecture: any
+Depends: ucf,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: cryptographic store accessible through a PKCS #11
+ OpenDNSSEC is a complete DNSSEC zone signing system which is very
+ easy to use with stability and security in mind.  There are a lot of
+ details in signing zone files with DNSSEC and OpenDNSSEC covers most
+ of it.
+ .
+ SoftHSM 2 is a software implementation of a generic cryptographic
+ device with a PKCS #11 Cryptographic Token Interface.
+ .
+ This package contains common files shared between enforcer and signer.
+
+Package: softhsm2
+Architecture: any
+Depends: libsofthsm2,
+         softhsm2-common,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: cryptographic store accessible through a PKCS #11
+ OpenDNSSEC is a complete DNSSEC zone signing system which is very
+ easy to use with stability and security in mind.  There are a lot of
+ details in signing zone files with DNSSEC and OpenDNSSEC covers most
+ of it.
+ .
+ SoftHSM 2 is a software implementation of a generic cryptographic
+ device with a PKCS #11 Cryptographic Token Interface.
+ .
+ This package contains command line tools.
+
+Package: libsofthsm2-dev
+Section: libdevel
+Architecture: any
+Depends: libsofthsm2 (= ${binary:Version}),
+         softhsm2-common,
+         ${misc:Depends}
+Conflicts: libsofthsm-dev
+Description: cryptographic store accessible through a PKCS #11
+ OpenDNSSEC is a complete DNSSEC zone signing system which is very
+ easy to use with stability and security in mind.  There are a lot of
+ details in signing zone files with DNSSEC and OpenDNSSEC covers most
+ of it.
+ .
+ SoftHSM 2 is a software implementation of a generic cryptographic
+ device with a PKCS #11 Cryptographic Token Interface.
+ .
+ This package contains development library.  You will need external
+ PKCS#11 header files.
+
+Package: libsofthsm2
+Section: libs
+Architecture: any
+Depends: softhsm2-common,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Recommends: softhsm2
+Provides: libpkcs11
+Breaks: opendnssec-common (<< 1.3.5-1~)
+Description: cryptographic store accessible through a PKCS #11
+ OpenDNSSEC is a complete DNSSEC zone signing system which is very
+ easy to use with stability and security in mind.  There are a lot of
+ details in signing zone files with DNSSEC and OpenDNSSEC covers most
+ of it.
+ .
+ SoftHSM 2 is a software implementation of a generic cryptographic
+ device with a PKCS #11 Cryptographic Token Interface.
+ .
+ This package contains shared library.
+
+Package: softhsm
+Section: oldlibs
+Pre-Depends: ${misc:Pre-Depends}
+Depends: softhsm2, ${misc:Depends}
+Architecture: all
+Description: cryptographic store accessible through a PKCS #11 (dummy)
+ SoftHSM 2 is a software implementation of a generic cryptographic
+ device with a PKCS #11 Cryptographic Token Interface.
+ .
+ This is a transitional package and can be safely removed.
+
+Package: softhsm-common
+Section: oldlibs
+Architecture: all
+Depends: softhsm2-common, ${misc:Depends}
+Description: cryptographic store accessible through a PKCS #11 (dummy)
+ SoftHSM 2 is a software implementation of a generic cryptographic
+ device with a PKCS #11 Cryptographic Token Interface.
+ .
+ This is a transitional package and can be safely removed.

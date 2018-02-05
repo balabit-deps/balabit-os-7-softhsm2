@@ -1,0 +1,7 @@
+softhsm (1.3.1-2) unstable; urgency=low
+
+  Upstream developers have changed libsofthsm.so location from
+  /usr/lib/libsofthsm.so to /usr/lib/softhsm/libsofthsm.so.  You
+  need to reflect this change in your configuration.
+
+ -- Ondřej Surý <ondrej@debian.org>  Fri, 10 Feb 2012 15:26:20 +0100

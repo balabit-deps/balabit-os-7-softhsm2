@@ -1,0 +1,2 @@
+libsofthsm2: shlib-without-versioned-soname usr/lib/softhsm/libsofthsm2.so libsofthsm2.so
+libsofthsm2: postinst-must-call-ldconfig usr/lib/softhsm/libsofthsm2.so
