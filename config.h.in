@@ -1,0 +1,149 @@
+/* config.h.in.  Generated from configure.ac by autoheader.  */
+
+/* Define to default visibility of PKCS#11 entry points */
+#undef CRYPTOKI_VISIBILITY
+
+/* The default log level */
+#undef DEFAULT_LOG_LEVEL
+
+/* Default storage backend for token objects */
+#undef DEFAULT_OBJECTSTORE_BACKEND
+
+/* The default PKCS#11 library */
+#undef DEFAULT_PKCS11_LIB
+
+/* The default location of softhsm2.conf */
+#undef DEFAULT_SOFTHSM2_CONF
+
+/* The default location of the token directory */
+#undef DEFAULT_TOKENDIR
+
+/* Define if advanced AES key wrap without pad is supported */
+#undef HAVE_AES_KEY_WRAP
+
+/* Define if advanced AES key wrap with pad is supported */
+#undef HAVE_AES_KEY_WRAP_PAD
+
+/* define if the compiler supports basic C++11 syntax */
+#undef HAVE_CXX11
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
+/* Define if you have dlopen */
+#undef HAVE_DLOPEN
+
+/* Define to 1 if you have the `getpwuid_r' function. */
+#undef HAVE_GETPWUID_R
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* Define to 1 if you have the `crypto' library (-lcrypto). */
+#undef HAVE_LIBCRYPTO
+
+/* Define to 1 if you have the `sqlite3' library (-lsqlite3). */
+#undef HAVE_LIBSQLITE3
+
+/* Whether LoadLibrary is available */
+#undef HAVE_LOADLIBRARY
+
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Build with object store database backend. */
+#undef HAVE_OBJECTSTORE_BACKEND_DB
+
+/* Define to 1 if you have the <openssl/ssl.h> header file. */
+#undef HAVE_OPENSSL_SSL_H
+
+/* Define to 1 if you have the <pthread.h> header file. */
+#undef HAVE_PTHREAD_H
+
+/* Define to 1 if you have the <sqlite3.h> header file. */
+#undef HAVE_SQLITE3_H
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* Define to 1 if you have the <sys/mman.h> header file. */
+#undef HAVE_SYS_MMAN_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* Define to the sub-directory in which libtool stores uninstalled libraries.
+   */
+#undef LT_OBJDIR
+
+/* Maximum PIN length */
+#undef MAX_PIN_LEN
+
+/* Minimum PIN length */
+#undef MIN_PIN_LEN
+
+/* Name of package */
+#undef PACKAGE
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* Define to the home page for this package. */
+#undef PACKAGE_URL
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* Non-paged memory for secure storage */
+#undef SENSITIVE_NON_PAGE
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* Version number of package */
+#undef VERSION
+
+/* SoftHSM major version number via PKCS#11 */
+#undef VERSION_MAJOR
+
+/* SoftHSM minor version number via PKCS#11 */
+#undef VERSION_MINOR
+
+/* Compile with Botan support */
+#undef WITH_BOTAN
+
+/* Compile with ECC support */
+#undef WITH_ECC
+
+/* Compile with FIPS 140-2 mode */
+#undef WITH_FIPS
+
+/* Compile with GOST support */
+#undef WITH_GOST
+
+/* Compile with OpenSSL support */
+#undef WITH_OPENSSL
